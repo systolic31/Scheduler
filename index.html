@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="ko" ng-app="Scheduler">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My scheduler</title>
+    <link href="StyleSheet1.css?ver=2" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+</head>
+<body ng-controller="MainCtrl">
+
+    <div style="width:100%;">
+        <div class="contents_wrap">
+            <div class="contents">
+                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; Schedule
+            </div>
+            <!-- 메모 추가공간 -->
+            <div class="panel panel-default memo" style="box-shadow:5px 5px 15px;">
+                <div class=" panel-heading" style="font-size:15px;">
+                    <span class="glyphicon glyphicon-pencil margin_icon" aria-hidden="true" style="margin-left:56%;"></span>
+                    <span class="glyphicon glyphicon-plus margin_icon" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove margin_icon" aria-hidden="true"></span>
+                    <!-- 메모 날짜 넣는 칸-->
+                </div>
+                <div class="panel-body tab-pane">
+                    Panel content
+                </div>
+            </div>
+        </div>
+        <div class="side">
+            <div class="status">
+                <!-- 상태 표시 -->
+                Add Contents
+            </div>
+            <form>
+                <div class="form_group">
+                    <label> Date </label> <br />
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="form_group">
+                    <label> Subject </label> <br />
+                    <input class="form-control" style="width:100%; line-height:30px;" type="text" />
+                </div>
+                <div class="form_group">
+                    <label> Details </label> <br />
+                    <textarea class="form-control" rows="5" style="resize:none"></textarea>
+                </div>
+                <div class="form_group" style="margin-top:10px;">
+                    <button class="btn btn-info" type="submit">Create</button>
+                    <button class="btn btn-default" style="float:right" type="submit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="JavaScript1.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿body {
+    font-family: 'Source Sans Pro', sans-serif;    
+}
+
+div {
+    overflow : hidden ; 
+}
+
+
+.form_group {
+    padding: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.contents_wrap {
+    padding: 20px;
+    background-color: lightblue;    
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    overflow-x:scroll;
+    white-space:nowrap;
+    width:1800px;
+}
+
+.tab-pane {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.side {
+    z-index: 5;
+    border-left: gray solid 1px;
+    width: 27%;
+    position: fixed;
+    right: 0;
+    padding: 10px;
+    background-color: white;
+    height: 100%;
+    overflow: hidden;
+}
+
+.status {
+    padding: 7px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.memo {
+    border: black solid 1px;
+    width: 325px;
+    height: 93%;
+    margin-top: 10px;
+    margin-right: 25px;
+    display: inline-block;
+}
+
+.contents {
+    font-size: 25px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.buttonblack {
+    background-color: #2E2E2E;
+}
+
+.margin_icon{
+    margin-right:4px;
+    cursor:pointer;
+}
