@@ -81,11 +81,8 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dddddd.html" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="index.html" />
     <Content Include="JavaScript1.js" />
-    <Content Include="StyleSheet.css" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>

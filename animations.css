@@ -1,0 +1,21 @@
+﻿.ng-enter, .ng-leave {
+    position: relative;
+    -webkit-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
+.ng-enter {
+    opacity:0;
+}
+
+.ng-enter-active {
+   opacity:1;
+}
+
+.ng-leave{
+    opacity:1;
+}
+
+.ng-leave-active {
+    opacity:0;
+}

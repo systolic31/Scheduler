@@ -33,7 +33,7 @@ div {
 .side {
     z-index: 5;
     border-left: gray solid 1px;
-    width: 27%;
+    width: 22%;
     position: fixed;
     right: 0;
     padding: 10px;

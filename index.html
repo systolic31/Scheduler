@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My scheduler</title>
-    <link href="StyleSheet1.css?ver=2" rel="stylesheet" type="text/css">
+    <link href="StyleSheet1.css?ver=32" rel="stylesheet" type="text/css">
+    <link href="animations.css?ver=2" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+
 </head>
 <body ng-controller="MainCtrl">
 
@@ -18,47 +21,81 @@
                 <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; Schedule
             </div>
             <!-- 메모 추가공간 -->
-            <div class="panel panel-default memo" style="box-shadow:5px 5px 15px;">
+            <div ng-repeat="schedule in schedules" class="panel panel-default memo" style="box-shadow:5px 5px 15px;">
                 <div class=" panel-heading" style="font-size:15px;">
-                    <span class="glyphicon glyphicon-pencil margin_icon" aria-hidden="true" style="margin-left:56%;"></span>
-                    <span class="glyphicon glyphicon-plus margin_icon" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-remove margin_icon" aria-hidden="true"></span>
+                    {{schedule.date|date:'MM/dd/yyyy'}}
+                    <span class="glyphicon glyphicon-pencil margin_icon" aria-hidden="true" style="margin-left:63%;" ng-click="setCurrentSchedule(schedule);setEditedSchedule(schedule);startEditing()"></span>
+                    <span class="glyphicon glyphicon-remove margin_icon" aria-hidden="true" ng-click="remove(schedule)"></span>
                     <!-- 메모 날짜 넣는 칸-->
                 </div>
                 <div class="panel-body tab-pane">
-                    Panel content
+                    <p style="font-weight:bold">Subject</p>
+                    {{schedule.subject}}
+                    <hr />
+                    <p style="font-weight:bold">Details</p>
+                    {{schedule.details}}
                 </div>
             </div>
         </div>
-        <div class="side">
-            <div class="status">
-                <!-- 상태 표시 -->
-                Add Contents
+        <div class="side">            
+            <!-- CREATING -->
+            <div ng-show="shouldShowCreating()">
+                <div class="status">
+                    <!-- 상태 표시 -->
+                    Add Contents
+                </div>
+                <form name="user_form" ng-submit="createSchedule(newschedule)">
+                    <div class="form_group">
+                        <label> Date </label> <br />
+                        <input type="date" ng-model="newschedule.date" name="date" class="form-control" required />
+                    </div>
+                    <div class="form_group">
+                        <label> Subject </label> <br />
+                        <input class="form-control" name="subject" ng-model="newschedule.subject" style="width:100%; line-height:30px;" type="text" required />
+                    </div>
+                    <div class="form_group">
+                        <label> Details </label> <br />
+                        <textarea class="form-control" name="details" rows="5" ng-model="newschedule.details" style="resize:none" required></textarea>
+                    </div>
+                    <div class="form_group" style="margin-top:10px;">
+                        <button class="btn btn-info" type="submit" ng-click="startCreating()">Create</button>
+                        <button class="btn btn-default" style="float:right" type="button" ng-click="cancelCreating()">Cancel</button>
+                    </div>
+                </form>
             </div>
-            <form>
-                <div class="form_group">
-                    <label> Date </label> <br />
-                    <input type="date" class="form-control" />
+                <!-- EDITING -->
+                <div ng-show="shouldShowEditing()">
+                    <div class="status">
+                        <!-- 상태 표시 -->
+                        Edit Contents
+                    </div>
+                    <form ng-submit="updateSchedule(editedSchedule)" novalidate>
+                        <div class="form_group">
+                            <label> Date </label> <br />
+                            <input type="date" ng-model="editedSchedule.date" class="form-control" />
+                        </div>
+                        <div class="form_group">
+                            <label> Subject </label> <br />
+                            <input class="form-control" ng-model="editedSchedule.subject" style="width:100%; line-height:30px;" type="text" />
+                        </div>
+                        <div class="form_group">
+                            <label> Details </label> <br />
+                            <textarea class="form-control" rows="5" ng-model="editedSchedule.details" style="resize:none"></textarea>
+                        </div>
+                        <div class="form_group" style="margin-top:10px;">
+                            <button class="btn btn-info" type="submit" ng-click="startEditing()"> Edit&nbsp;</button>
+                            <button class="btn btn-default" style="float:right" type="button" ng-click="cancelEditing()">Cancel</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form_group">
-                    <label> Subject </label> <br />
-                    <input class="form-control" style="width:100%; line-height:30px;" type="text" />
-                </div>
-                <div class="form_group">
-                    <label> Details </label> <br />
-                    <textarea class="form-control" rows="5" style="resize:none"></textarea>
-                </div>
-                <div class="form_group" style="margin-top:10px;">
-                    <button class="btn btn-info" type="submit">Create</button>
-                    <button class="btn btn-default" style="float:right" type="submit">Cancel</button>
-                </div>
-            </form>
-        </div>
+            </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="JavaScript1.js"></script>
+    <script src="JavaScript1.js?ver=12"></script>
+
 </body>
 </html>
